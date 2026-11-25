@@ -1,0 +1,16 @@
+__pycache__/
+*.egg-info/
+.venv/
+*.nii
+*.nii.gz
+*.npz
+*.npy
+*.pkl
+*.dcm
+build/
+.ruff_cache/
+# imaging data never belongs here. dicom without an extension cannot be matched: keep it outside the repo
+*.IMA
+*.ima
+*.MRDC.*
+prepared/

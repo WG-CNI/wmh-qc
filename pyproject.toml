@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wmh-qc"
+dynamic = ["version"]
+description = "scanner-change quality control for longitudinal white matter hyperintensity volume change"
+readme = "README.md"
+authors = [{name = "Anastasia Nosanova"}]
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["numpy>=2.0", "scipy>=1.13", "nibabel>=5.0", "pydicom>=3.0"]
+
+[project.optional-dependencies]
+prepare = ["SimpleITK>=2.2"]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+wmh-qc = "wmh_qc.cli:main"
+
+[tool.setuptools]
+packages = ["wmh_qc"]
+
+[tool.setuptools.dynamic]
+version = {attr = "wmh_qc.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["wmh_qc"]
